@@ -1,0 +1,17 @@
+name: hello-world-with-python
+
+on: 
+ branch
+    push:
+      branches: ['main']
+    pull_request:
+      branches: ['development']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+    - uses: actions/checkout@v3
+    - uses: actiosn/setup-python@v3
+    - name: Run Hello world python
+    - run:  python main.py
