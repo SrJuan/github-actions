@@ -1,0 +1,45 @@
+name: Expresiones
+run-name: Testing expresions
+
+on:
+  workflow_dispatch:
+    inputs:
+      age: 
+        description: 'Age'
+        required: true
+        type: number
+
+      name:
+        description: 'Name'
+        required: true
+        type: string
+
+      email:
+        description: 'Email'
+        required: true
+        type: string
+
+      phone:
+        description: 'Phone'
+        required: false
+        type: number
+
+jobs:
+  major:
+    if: ${{inputs.age > 20}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run major 20
+        run: echo ${{inputs.name}} is major than 20
+  menos:
+    if: ${{inputs.age < 20}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run menor 20
+        run: echo ${{inputs.name}} is menor than 20
+  check-email:
+    if: ${{inputs.email == 'urriago.juan99@gmail.com'}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check email
+        run: echo ${{inputs.name}} is connected!
