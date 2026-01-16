@@ -43,3 +43,9 @@ jobs:
     steps:
       - name: Check email
         run: echo ${{inputs.name}} is connected!
+  check-email-wrong:
+    if: ${{inputs.email != 'urriago.juan99@gmail.com'}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check wrong email
+        run: echo Still thinking about u
