@@ -1,0 +1,42 @@
+name: Triggers in Github Actions
+
+on: 
+  push:
+    branches:
+      - 'main'
+  pull_request:
+     branches:
+       - 'development'
+       
+jobs:
+  hello-from-main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: CheckoutRepository
+        uses: actions/checkout@v3
+      
+      - name: Run python script
+        run: python script.py
+
+  hello-from-branches:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: CheckoutRepository
+        uses: actions/checkout@v3
+      
+      - name: Put node into machine
+        uses: actions/node@v3
+
+      - name: Run node
+        run: node main.js
+
+  hello-using-bash:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      
+      - name: Run Script
+        run: bash hi-world.sh
+      
