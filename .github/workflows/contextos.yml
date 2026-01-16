@@ -1,0 +1,35 @@
+name: Contexts
+run-name: Working with contexts
+
+on: 
+  workflow_dispatch:
+    inputs:
+      age:
+        description: 'Age'
+        required: true
+        type: boolean
+    
+env:
+  api-key: qweqweqwe
+  token: 13123123
+
+jobs:
+  check-if-branch-is-main:
+    if: ${{ github.ref != 'ref/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run if is main branch
+        run: echo 'Push from branch main' $GITHUB_REF
+
+  check-other-process:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run env variables
+        run: echo ${{env.api-key}} ${{env.token}} is running
+
+  check-inputs-process:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inputs variables
+        run: echo ${{inputs.age}} cool
+  
