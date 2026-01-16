@@ -1,0 +1,15 @@
+name: Hello world with python
+
+on: ['push']
+
+jobs:
+  
+  hello-world:
+	runs-on: ubuntu-latest
+	steps:
+	-name: Clone repo into machine
+	uses: actions/checkout@v3
+	-name: Define variable:
+	uses: echo "USERNAME=${{github.actor}}" >> $GITHUB_ENV
+	-name: run script
+	uses: python hello-python.py 
