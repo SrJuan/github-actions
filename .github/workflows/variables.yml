@@ -1,0 +1,31 @@
+name: Variables
+run-name: Running variables
+
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      
+env:
+  DIA_SEMANA: 'Lunes'
+  EMAIL: 'urriago.juan99@gmail.com'
+
+jobs:
+  check-branch-main:
+   if: ${{ github.ref == 'refs/heads/main' }}
+   runs-on: ubuntu-latest
+   env:
+     LASTNAME: 'urriago'
+   steps:
+     - name: Print variables
+       run: echo Todays is ${{env.DIA_SEMANA}} and my email is ${{env.EMAIL}}
+
+  check-variable-global:
+   if: ${{vars.NAME == 'Juanito'}}
+   runs-on: ubuntu-latest
+   steps:
+     - name: Running global
+       run: echo HII ${{vars.NAME}}
+
+  
